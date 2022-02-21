@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-margin-top: 30px;
+margin-top: 50px;
 `
 export const Input = styled.input`
   display: inline-block;

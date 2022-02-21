@@ -1,13 +1,13 @@
-import { Nav, Link } from "./Navigation.styled";
+import { Header, Nav, Link } from "./Navigation.styled";
 
 function Navigation() {
     return (
-        <header>
+        <Header>
             <Nav>
                 <Link to="/">Home</Link>
                 <Link to="/movies">Movies</Link>
             </Nav>
-        </header>
+        </Header>
  )   
 }
 

@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     margin: 0;
     font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif, "The Nautigal", cursive;
     background-color: #fff;
     color: #010101;
     line-height: 1.5;

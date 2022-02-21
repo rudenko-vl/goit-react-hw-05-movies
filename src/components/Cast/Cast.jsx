@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useParams, useLocation, Link } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { getMovieCredits } from "../../services/ApiService";
-import { List, Item, Img, Title } from "../../pages/HomePage/HomePage.styled";
+import { List, Item, Img, Title, HideBtn } from "./Cast.styled";
 
 const Cast = () => {
     const imgUrl = 'https://image.tmdb.org/t/p/w300';
@@ -18,22 +18,23 @@ const Cast = () => {
 
     return (
         <>
-            <button type='button'>
-                <Link to={location?.state ?? `/movies/${movieId}` }>Hide cast</Link>
-            </button>
             {actors && (
                 <List>
                     {actors.map(actor => {
                         return (
                             <Item key={actor.id}>
                                 <Img src={actor.profile_path? `${imgUrl}${actor.profile_path}`: notPhoto} alt={actor.name} />
+                                <div>
                                 <Title>name: {actor.name}</Title>
                                 <Title>character: {actor.character}</Title>
+                                </div>
                             </Item>
                         )
                     } )}
                 </List>
-        )}
+            )}
+                <HideBtn to={location?.state ?? `/movies/${movieId}` }>Hide cast</HideBtn>
+            
         </>
     )
 

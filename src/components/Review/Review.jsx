@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { getMovieReview } from "../../services/ApiService";
+import { HideBtn } from 'components/Cast/Cast.styled';
+import { ListReview } from "./Review.styled";
 
 const Review = () => {
     const [reviews, setReview] = useState([]);
     const movieId = useParams().movieId;
+    const location = useLocation();
 
     useEffect(() => {
         getMovieReview(movieId).then(data => {
@@ -15,7 +18,7 @@ const Review = () => {
     return (
         <>
             {reviews.length > 0 ?
-            (<ul>
+            (<ListReview>
                     {reviews.map(review => {
                         return (
                             <li key={review.id}>
@@ -24,8 +27,9 @@ const Review = () => {
                             </li>
                         )
                     })}
-        </ul>)
-            : (<p>Not found</p>)}
+        </ListReview>)
+                : (<p>Not found</p>)}
+            <HideBtn to={location?.state ?? `/movies/${movieId}` }>Hide reviews</HideBtn>
         </>
     )
 

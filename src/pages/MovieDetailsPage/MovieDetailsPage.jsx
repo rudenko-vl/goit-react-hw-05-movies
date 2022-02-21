@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useParams, NavLink, Outlet, Link, useLocation, } from 'react-router-dom';
+import { useParams, Outlet} from 'react-router-dom';
 import { getMovieDetails } from "../../services/ApiService";
 import MovieDescription from "../../components/MovieDescription/MovieDescription";
+import { List, LinkNav } from "./MovieDetailsPage.styled";
 
 const MovieDetailsPage = () => {
 
     const [movie, setMovie] = useState(false);
     const { movieId } = useParams();
-    const location = useLocation();
+    
     
     useEffect(() => {
     getMovieDetails(movieId).then(( data ) => {
@@ -17,21 +18,19 @@ const MovieDetailsPage = () => {
     
     return (
         <>
-            <button type='button'>
-                <Link to={location?.state ?? '/'}>Go back</Link>
-            </button>
+            
             {movie && (
-                <>
-                    <MovieDescription movie={movie} />
-                    <h2>Additional information</h2>
-            <ul>
+          <>
+            <MovieDescription movie={movie} />
+            <h3>Additional information</h3>
+            <List>
               <li>
-                <NavLink to="cast">cast </NavLink>
+                <LinkNav to="cast">Cast</LinkNav>
               </li>
               <li>
-                <NavLink to="reviews">reviews </NavLink>
+                <LinkNav to="reviews">Reviews</LinkNav>
               </li>
-            </ul>
+            </List>
             <Outlet/>
                 </>
             )}

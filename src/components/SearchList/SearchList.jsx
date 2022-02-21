@@ -1,5 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
-import { List, Item, Img, Title } from "../../pages/HomePage/HomePage.styled";
+import { useLocation } from 'react-router-dom';
+import { List, Item, Img, Title, MovieLink } from "../../pages/HomePage/HomePage.styled";
 
 const SearchList = ({ movies }) => {
     const location = useLocation();
@@ -12,12 +12,12 @@ const SearchList = ({ movies }) => {
                 movies.map(movie => {
                     return (
                         <Item key={movie.id}>
-                            <Link
+                            <MovieLink
                                 to={`${movie.id}`}
                                 state={`${location.pathname}${location.search}`}
                             ><Img src={movie.poster_path? `${imgUrl}${movie.poster_path}`: notMovieImg} alt={movie.id} />
                                 <Title>{movie.title}</Title>
-                            </Link>
+                            </MovieLink>
                         </Item>
                     );
                 })}
