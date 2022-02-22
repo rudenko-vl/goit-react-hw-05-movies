@@ -15,6 +15,7 @@ function MoviesPage() {
         duration: 3000,
         style: {
             fontWeight: 700,
+            backgroundColor: "yellow",
             color: "black",
             width: "330px",
             height: "60px",}
@@ -23,16 +24,17 @@ function MoviesPage() {
     useEffect(() => {
         if (query) {
             setLoading(true);
-            getMoviesByQuery(query).then((data) => {
+            getMoviesByQuery(query.trim()).then((data) => {
                 setLoading(false);
                 if (data.results.length === 0) {
                     notifyError()
                 } else {
                 toast.loading(`Search in progress ${query}`, {
                     duration: 2000,
-                        style: {
+                    style: {
+                         backgroundColor: "green",
                          fontWeight: 700,
-                         color: "green",
+                         color: "white",
                          width: "250px",
                          height: "60px",}})
                 };
@@ -43,18 +45,20 @@ function MoviesPage() {
   }, [query]);
 
     const handleSubmit = (ev) => {
+        const inputValue = ev.currentTarget.elements.query.value;
         ev.preventDefault();
-        if (ev.currentTarget.elements.query.value === '') {
+        if (inputValue.trim() === '') {
             toast.error('⬇ Enter text!', {
                     duration: 2000,
                         style: {
-                         fontWeight: 700,
-                         color: "green",
-                         width: "170px",
-                         height: "60px",}})
+                            fontWeight: 700,
+                            backgroundColor: "yellow",
+                            color: "green",
+                            width: "170px",
+                            height: "60px",}})
             return
         }
-        setSearchParams({ query: ev.currentTarget.elements.query.value });
+        setSearchParams({ query: inputValue });
         ev.currentTarget.reset();
 }
 
