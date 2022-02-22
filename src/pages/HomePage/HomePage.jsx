@@ -12,7 +12,7 @@ function HomePage() {
         })
     }, [setMoviesList]);
     return (
-        
+        <>
             <List>
             {moviesList && moviesList.map(movie => {
                 return (
@@ -27,7 +27,7 @@ function HomePage() {
                 )
             })}
         </List>
-        
+        </>
     )
 
 };

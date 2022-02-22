@@ -3,22 +3,26 @@ import { useParams, Outlet} from 'react-router-dom';
 import { getMovieDetails } from "../../services/ApiService";
 import MovieDescription from "../../components/MovieDescription/MovieDescription";
 import { List, LinkNav } from "./MovieDetailsPage.styled";
+import Loading from 'components/Loading/Loading';
 
 const MovieDetailsPage = () => {
 
     const [movie, setMovie] = useState(false);
+    const [loading, setLoading] = useState(false);
     const { movieId } = useParams();
     
     
-    useEffect(() => {
-    getMovieDetails(movieId).then(( data ) => {
+  useEffect(() => {
+      setLoading(true);
+    getMovieDetails(movieId).then((data) => {
+      setLoading(false);
       return setMovie(data);
     });
     }, [movieId]);
     
     return (
         <>
-            
+            {loading && <Loading/>}
             {movie && (
           <>
             <MovieDescription movie={movie} />

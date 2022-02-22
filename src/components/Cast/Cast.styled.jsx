@@ -12,7 +12,7 @@ margin-left: -30px;
 export const Item = styled.li`
 display: flex;
 flex-direction: column;
-justify-content: space-between;
+justify-content: center;
 background-color: #073631;
 margin-top: 30px;
 margin-left: 30px;
