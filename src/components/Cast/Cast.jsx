@@ -10,7 +10,7 @@ const Cast = () => {
     const [loading, setLoading] = useState(false);
     const location = useLocation();
     const movieId = useParams().movieId;
-    const notPhoto = 'http://zornet.ru/_fr/19/9855749.png';
+    const notPhoto = 'https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_960_720.png';
 
     useEffect(() => {
         setLoading(true)
